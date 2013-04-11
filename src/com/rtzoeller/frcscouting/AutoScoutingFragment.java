@@ -17,9 +17,7 @@ public class AutoScoutingFragment extends ScoutingFragment {
 	}
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		// Create a new TextView and set its text to the fragment's section
-		// number argument value.			
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {		
 				final LinearLayout auto = (LinearLayout)inflater.inflate(R.layout.fragment_autonomous_scouting, container, false);
 				
 				((Button)auto.findViewById(R.id.lowgoaldec)).setOnClickListener(new OnClickListener() {

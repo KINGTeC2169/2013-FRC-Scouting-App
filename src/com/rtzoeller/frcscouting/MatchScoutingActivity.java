@@ -126,9 +126,7 @@ public class MatchScoutingActivity extends FragmentActivity implements
 
 		@Override
 		public Fragment getItem(int position) {
-			// getItem is called to instantiate the fragment for the given page.
-			// Return a DummySectionFragment (defined as a static inner class
-			// below) with the page number as its lone argument.
+			// Launch both Autonomous and Tele-op fragments
 			Fragment fragment = null;
 			Bundle args = null;
 			switch(position){
@@ -156,6 +154,7 @@ public class MatchScoutingActivity extends FragmentActivity implements
 
 		@Override
 		public CharSequence getPageTitle(int position) {
+			// Set the titles for the match scoring tabs
 			switch (position) {
 			case 0:
 				return getString(R.string.title_section1).toUpperCase();

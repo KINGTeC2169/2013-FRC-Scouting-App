@@ -21,8 +21,10 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
+		// This array holds the item names for our ListView
 		String[] listdata = {"Pit Scouting","Match Scouting"};
 		
+		// Build the ListView from the array
 		list = (ListView)findViewById(R.id.list);
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listdata);
 		list.setAdapter(adapter);
@@ -48,8 +50,11 @@ public class MainActivity extends Activity {
 	public void launchScoutingDisplay(View view, int position) {
 		switch(position){
 		case 0:
+			// Pit Scouting selected
+			// TODO: Add Pit Scouting activity
 			break;
 		case 1:
+			// Match Scouting selected
 			startActivity(new Intent(this, MatchScoutingActivity.class));
 			break;
 		default:

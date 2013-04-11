@@ -17,9 +17,7 @@ public class TeleopScoutingFragment extends ScoutingFragment {
 	}
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		// Create a new TextView and set its text to the fragment's section
-		// number argument value.			
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {		
 				final LinearLayout teleop = (LinearLayout)inflater.inflate(R.layout.fragment_teleop_scouting, container, false);
 				
 		        ((Button)teleop.findViewById(R.id.lowgoaldec)).setOnClickListener(new OnClickListener() {
