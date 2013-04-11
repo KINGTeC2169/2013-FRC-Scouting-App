@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">FRC Scouting</string>
+    <string name="menu_settings">Settings</string>
+    <string name="menu_submit">Submit</string>
+    <string name="title_section1">Autonomous</string>
+    <string name="title_section2">Teleop</string>
+    <string name="title_activity_match_scouting">Match Scouting</string>
+    
+    <string-array name="pyramidoptions">
+        <item>Didn\'t Climb</item>
+        <item>First Level</item>
+        <item>Second Level</item>
+        <item>Third Level</item>
+    </string-array>
+
+    <string-array name="fouloptions">
+        <item>No Penalties</item>
+        <item>Minor Penalties</item>
+        <item>Major Penalties</item>
+    </string-array>
+</resources>

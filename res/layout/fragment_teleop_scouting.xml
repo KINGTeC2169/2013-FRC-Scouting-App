@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <EditText
+            android:id="@+id/matchnumber"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="number" 
+            android:hint="Match Number" />
+
+        <EditText
+            android:id="@+id/robotnumber"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="number"
+            android:hint="Robot Number" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/lowgoallbl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Low Goal"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+         <Button
+            android:id="@+id/lowgoaldec"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:text="-"
+            android:layout_weight="2"
+            android:padding="20dip" />
+
+        <TextView
+            android:id="@+id/lowgoalcounter"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="0"
+            android:textAppearance="?android:attr/textAppearanceLarge" 
+            android:layout_weight="1" />
+        
+        <Button
+            android:id="@+id/lowgoalinc"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:text="+"
+            android:layout_weight="2"
+            android:padding="20dip" />
+
+    </LinearLayout>
+    
+    <TextView
+        android:id="@+id/medgoallbl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Medium Goal"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/medgoaldec"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:text="-"
+            android:layout_weight="2"
+            android:padding="20dip" />
+
+        <TextView
+            android:id="@+id/medgoalcounter"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="0"
+            android:textAppearance="?android:attr/textAppearanceLarge" 
+            android:layout_weight="1" />
+        
+        <Button
+            android:id="@+id/medgoalinc"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:text="+"
+            android:layout_weight="2"
+            android:padding="20dip" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/highgoallbl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="High Goal"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/highgoaldec"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:text="-"
+            android:layout_weight="2"
+            android:padding="20dip" />
+
+        <TextView
+            android:id="@+id/highgoalcounter"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="0"
+            android:textAppearance="?android:attr/textAppearanceLarge" 
+            android:layout_weight="1" />
+        
+        <Button
+            android:id="@+id/highgoalinc"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:text="+"
+            android:layout_weight="2"
+            android:padding="20dip" />
+
+    </LinearLayout>
+    
+    <TextView
+        android:id="@+id/pyramidgoallbl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Pyramid Goal"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/pyramidgoaldec"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:text="-"
+            android:layout_weight="2"
+            android:padding="20dip" />
+
+        <TextView
+            android:id="@+id/pyramidgoalcounter"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="0"
+            android:textAppearance="?android:attr/textAppearanceLarge" 
+            android:layout_weight="1" />
+        
+        <Button
+            android:id="@+id/pyramidgoalinc"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:text="+"
+            android:layout_weight="2"
+            android:padding="20dip" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <Spinner
+            android:id="@+id/pyramidspinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:entries="@array/pyramidoptions" />
+
+        <Spinner
+            android:id="@+id/foulspinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:entries="@array/fouloptions" />
+        	
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/comments"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textMultiLine" >
+        
+    </EditText>
+
+</LinearLayout>
