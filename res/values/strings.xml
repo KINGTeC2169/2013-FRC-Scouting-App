@@ -3,7 +3,7 @@
 
     <string name="app_name">FRC Scouting</string>
     <string name="menu_settings">Settings</string>
-    <string name="menu_submit">Submit</string>
+    <string name="menu_submit">Save Match</string>
     <string name="title_section1">Autonomous</string>
     <string name="title_section2">Teleop</string>
     <string name="title_activity_match_scouting">Match Scouting</string>

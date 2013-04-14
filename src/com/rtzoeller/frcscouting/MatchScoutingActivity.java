@@ -9,8 +9,10 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 public class MatchScoutingActivity extends FragmentActivity implements
 		ActionBar.TabListener {
@@ -91,6 +93,11 @@ public class MatchScoutingActivity extends FragmentActivity implements
 			// http://developer.android.com/design/patterns/navigation.html#up-vs-back
 			//
 			NavUtils.navigateUpFromSameTask(this);
+			return true;
+		case R.id.menu_submit:
+			Toast toast = Toast.makeText(getApplicationContext(), "Saved Match", Toast.LENGTH_SHORT);
+			toast.setGravity(Gravity.CENTER, 0, 0);
+			toast.show();
 			return true;
 		}
 		return super.onOptionsItemSelected(item);

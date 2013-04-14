@@ -189,21 +189,21 @@
         android:layout_height="wrap_content" >
 
         <CheckBox
-            android:id="@+id/checkBox1"
+            android:id="@+id/pushedothers"
             android:layout_width="0dip"
             android:layout_height="wrap_content"
             android:text="Pushed Others"
             android:layout_weight="1" />
 
         <CheckBox
-            android:id="@+id/checkBox2"
+            android:id="@+id/waspushed"
             android:layout_width="0dip"
             android:layout_height="wrap_content"
             android:text="Was Pushed"
             android:layout_weight="1" />
 
         <CheckBox
-            android:id="@+id/checkBox4"
+            android:id="@+id/deadsticked"
             android:layout_width="0dip"
             android:layout_height="wrap_content"
             android:text="Dead Sticked"
