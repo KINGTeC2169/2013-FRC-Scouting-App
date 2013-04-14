@@ -95,6 +95,28 @@ public class MatchScoutingActivity extends FragmentActivity implements
 			NavUtils.navigateUpFromSameTask(this);
 			return true;
 		case R.id.menu_submit:
+			// Serialize our autonomous data
+			AutoScoutingFragment auto = (AutoScoutingFragment) getSupportFragmentManager().findFragmentByTag("android:switcher:"+R.id.pager+":0");
+			if(auto != null)  // Make sure our fragment has been instantiated
+			{
+				if(auto.getView() != null) // Make sure the fragment's view has not been destroyed
+				{
+					// Call our function
+					auto.serialize();
+				}
+			}
+			
+			// Serialize our tele-op data
+			TeleopScoutingFragment teleop = (TeleopScoutingFragment) getSupportFragmentManager().findFragmentByTag("android:switcher:"+R.id.pager+":1");
+			if(teleop != null)  // Make sure our fragment has been instantiated
+			{
+				if(teleop.getView() != null) // Make sure the fragment's view has not been destroyed
+				{
+					// Call our function
+					teleop.serialize();
+				}
+			}
+			
 			Toast toast = Toast.makeText(getApplicationContext(), "Saved Match", Toast.LENGTH_SHORT);
 			toast.setGravity(Gravity.CENTER, 0, 0);
 			toast.show();

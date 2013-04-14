@@ -37,4 +37,12 @@ public abstract class ScoutingFragment extends Fragment {
 		return x;
 	}
 	
+	public String serialize() {
+		// Return all of our Frisbee counts as a string
+		return Integer.toString(lowgoal) + ", "
+				+ Integer.toString(mediumgoal) + ", "
+				+ Integer.toString(highgoal) + ", "
+				+ Integer.toString(pyramidgoal);
+	}
+	
 }
