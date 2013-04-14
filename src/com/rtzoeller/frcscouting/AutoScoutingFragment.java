@@ -17,7 +17,8 @@ public class AutoScoutingFragment extends ScoutingFragment {
 	}
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {		
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {	
+				setRetainInstance(true);
 				final LinearLayout auto = (LinearLayout)inflater.inflate(R.layout.fragment_autonomous_scouting, container, false);
 				
 				((Button)auto.findViewById(R.id.lowgoaldec)).setOnClickListener(new OnClickListener() {

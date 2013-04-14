@@ -57,7 +57,8 @@
             android:gravity="center"
             android:text="0"
             android:textAppearance="?android:attr/textAppearanceLarge" 
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:freezesText="true" />
         
         <Button
             android:id="@+id/lowgoalinc"
@@ -97,7 +98,8 @@
             android:gravity="center"
             android:text="0"
             android:textAppearance="?android:attr/textAppearanceLarge" 
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:freezesText="true" />
         
         <Button
             android:id="@+id/medgoalinc"
@@ -137,7 +139,8 @@
             android:gravity="center"
             android:text="0"
             android:textAppearance="?android:attr/textAppearanceLarge" 
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:freezesText="true" />
         
         <Button
             android:id="@+id/highgoalinc"

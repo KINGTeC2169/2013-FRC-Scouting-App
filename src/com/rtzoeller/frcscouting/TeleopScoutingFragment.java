@@ -17,7 +17,8 @@ public class TeleopScoutingFragment extends ScoutingFragment {
 	}
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {		
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+				setRetainInstance(true);
 				final LinearLayout teleop = (LinearLayout)inflater.inflate(R.layout.fragment_teleop_scouting, container, false);
 				
 		        ((Button)teleop.findViewById(R.id.lowgoaldec)).setOnClickListener(new OnClickListener() {
