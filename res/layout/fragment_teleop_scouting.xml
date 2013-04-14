@@ -4,31 +4,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" >
-
-        <EditText
-            android:id="@+id/matchnumber"
-            android:layout_width="0dip"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:inputType="number" 
-            android:hint="Match Number" />
-
-        <EditText
-            android:id="@+id/robotnumber"
-            android:layout_width="0dip"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:inputType="number"
-            android:hint="Robot Number" />
-
-    </LinearLayout>
-
     <TextView
         android:id="@+id/lowgoallbl"
         android:layout_width="match_parent"
@@ -48,7 +23,7 @@
             android:layout_height="wrap_content"
             android:text="-"
             android:layout_weight="2"
-            android:padding="20dip" />
+            android:padding="15dip" />
 
         <TextView
             android:id="@+id/lowgoalcounter"
@@ -65,7 +40,7 @@
             android:layout_height="wrap_content"
             android:text="+"
             android:layout_weight="2"
-            android:padding="20dip" />
+            android:padding="15dip" />
 
     </LinearLayout>
     
@@ -88,7 +63,7 @@
             android:layout_height="wrap_content"
             android:text="-"
             android:layout_weight="2"
-            android:padding="20dip" />
+            android:padding="15dip" />
 
         <TextView
             android:id="@+id/medgoalcounter"
@@ -105,7 +80,7 @@
             android:layout_height="wrap_content"
             android:text="+"
             android:layout_weight="2"
-            android:padding="20dip" />
+            android:padding="15dip" />
 
     </LinearLayout>
 
@@ -128,7 +103,7 @@
             android:layout_height="wrap_content"
             android:text="-"
             android:layout_weight="2"
-            android:padding="20dip" />
+            android:padding="15dip" />
 
         <TextView
             android:id="@+id/highgoalcounter"
@@ -145,7 +120,7 @@
             android:layout_height="wrap_content"
             android:text="+"
             android:layout_weight="2"
-            android:padding="20dip" />
+            android:padding="15dip" />
 
     </LinearLayout>
     
@@ -168,7 +143,7 @@
             android:layout_height="wrap_content"
             android:text="-"
             android:layout_weight="2"
-            android:padding="20dip" />
+            android:padding="15dip" />
 
         <TextView
             android:id="@+id/pyramidgoalcounter"
@@ -185,7 +160,7 @@
             android:layout_height="wrap_content"
             android:text="+"
             android:layout_weight="2"
-            android:padding="20dip" />
+            android:padding="15dip" />
 
     </LinearLayout>
     <LinearLayout
@@ -207,6 +182,33 @@
             android:layout_weight="1"
             android:entries="@array/fouloptions" />
         	
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <CheckBox
+            android:id="@+id/checkBox1"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:text="Pushed Others"
+            android:layout_weight="1" />
+
+        <CheckBox
+            android:id="@+id/checkBox2"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:text="Was Pushed"
+            android:layout_weight="1" />
+
+        <CheckBox
+            android:id="@+id/checkBox4"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:text="Dead Sticked"
+            android:layout_weight="1" />
+
     </LinearLayout>
 
     <EditText
