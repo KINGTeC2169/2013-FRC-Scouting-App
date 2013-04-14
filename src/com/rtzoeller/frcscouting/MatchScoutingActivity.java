@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -95,6 +96,9 @@ public class MatchScoutingActivity extends FragmentActivity implements
 			NavUtils.navigateUpFromSameTask(this);
 			return true;
 		case R.id.menu_submit:
+			String autodata = null;
+			String teleopdata = null;
+			
 			// Serialize our autonomous data
 			AutoScoutingFragment auto = (AutoScoutingFragment) getSupportFragmentManager().findFragmentByTag("android:switcher:"+R.id.pager+":0");
 			if(auto != null)  // Make sure our fragment has been instantiated
@@ -102,7 +106,7 @@ public class MatchScoutingActivity extends FragmentActivity implements
 				if(auto.getView() != null) // Make sure the fragment's view has not been destroyed
 				{
 					// Call our function
-					auto.serialize();
+					autodata = auto.serialize();
 				}
 			}
 			
@@ -113,10 +117,15 @@ public class MatchScoutingActivity extends FragmentActivity implements
 				if(teleop.getView() != null) // Make sure the fragment's view has not been destroyed
 				{
 					// Call our function
-					teleop.serialize();
+					teleopdata = teleop.serialize();
 				}
 			}
 			
+			// Display our match report on the debug console
+			String matchdata = autodata + ", " + teleopdata;
+			Log.d("Save Match Data", matchdata);
+			
+			// Alert the user that we have saved match data
 			Toast toast = Toast.makeText(getApplicationContext(), "Saved Match", Toast.LENGTH_SHORT);
 			toast.setGravity(Gravity.CENTER, 0, 0);
 			toast.show();
