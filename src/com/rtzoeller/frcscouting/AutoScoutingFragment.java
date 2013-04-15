@@ -71,10 +71,15 @@ public class AutoScoutingFragment extends ScoutingFragment {
 	}
 	
 	@Override
-	public String serialize() {
-		return ((EditText)auto.findViewById(R.id.matchnumber)).getText().toString() + ", " +
-				((EditText)auto.findViewById(R.id.robotnumber)).getText().toString() + ", " +
-				super.serialize() + ", " +
-				((EditText)auto.findViewById(R.id.comments)).getText().toString();
+	public String[] serialize() {
+		// Return a string array with our autonomous data
+		// We ignore the pyramid goal in autonomous so we only pull out the first three elements
+		String[] goals = super.serialize();
+				
+		String[] s = {((EditText)auto.findViewById(R.id.matchnumber)).getText().toString(),
+				((EditText)auto.findViewById(R.id.robotnumber)).getText().toString(),
+				goals[0], goals[1], goals[2], // Here we are only using the first three goals
+				((EditText)auto.findViewById(R.id.comments)).getText().toString()};
+		return s;
 	}
 }

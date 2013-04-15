@@ -87,13 +87,17 @@ public class TeleopScoutingFragment extends ScoutingFragment {
 	}
 	
 	@Override
-	public String serialize() {
-		return super.serialize() + ", " +
-				Integer.toString(((Spinner)teleop.findViewById(R.id.pyramidspinner)).getSelectedItemPosition()) + ", " +
-				Integer.toString(((Spinner)teleop.findViewById(R.id.foulspinner)).getSelectedItemPosition()) + ", " +
-				Integer.toString((((CheckBox)teleop.findViewById(R.id.pushedothers)).isChecked() ? 1 : 0)) + ", " +
-				Integer.toString((((CheckBox)teleop.findViewById(R.id.waspushed)).isChecked() ? 1 : 0)) + ", " +
-				Integer.toString((((CheckBox)teleop.findViewById(R.id.deadsticked)).isChecked() ? 1 : 0)) + ", " +
-				((EditText)teleop.findViewById(R.id.comments)).getText().toString();
+	public String[] serialize() {
+		// Return a string array with our tele-op data
+		String[] goals = super.serialize();
+				
+		String[] s = {goals[0], goals[1], goals[2], goals[3], // Grab our goal data
+				Integer.toString(((Spinner)teleop.findViewById(R.id.pyramidspinner)).getSelectedItemPosition()),
+				Integer.toString(((Spinner)teleop.findViewById(R.id.foulspinner)).getSelectedItemPosition()),
+				Integer.toString((((CheckBox)teleop.findViewById(R.id.pushedothers)).isChecked() ? 1 : 0)),
+				Integer.toString((((CheckBox)teleop.findViewById(R.id.waspushed)).isChecked() ? 1 : 0)),
+				Integer.toString((((CheckBox)teleop.findViewById(R.id.deadsticked)).isChecked() ? 1 : 0)),
+				((EditText)teleop.findViewById(R.id.comments)).getText().toString()};
+		return s;
 	}
 }

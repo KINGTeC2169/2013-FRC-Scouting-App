@@ -3,10 +3,10 @@ package com.rtzoeller.frcscouting;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Arrays;
 
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
-import android.media.MediaScannerConnection;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
@@ -103,8 +103,8 @@ ActionBar.TabListener {
 			NavUtils.navigateUpFromSameTask(this);
 			return true;
 		case R.id.menu_submit:
-			String autodata = null;
-			String teleopdata = null;
+			String[] autodata = null;
+			String[] teleopdata = null;
 
 			// Serialize our autonomous data
 			AutoScoutingFragment auto = (AutoScoutingFragment) getSupportFragmentManager().findFragmentByTag("android:switcher:"+R.id.pager+":0");
@@ -128,10 +128,32 @@ ActionBar.TabListener {
 				}
 			}
 
-			// Display our match report on the debug console
-			String matchdata = autodata + ", " + teleopdata;
-			new WriteFile().execute(matchdata);
-			Log.d("Save Match Data", matchdata);
+			// Verify that all of the required fields are filled in
+			boolean baddata = false;
+			for(int i = 0; i < autodata.length - 1; i++) { // We don't care if the comments are empty
+				if (autodata[i].isEmpty()) {
+					baddata = true;
+					break;
+				}
+			}
+			for(int i = 0; i < teleopdata.length - 1; i++) { // We don't care if the comments are empty
+				if (teleopdata[i].isEmpty()) {
+					baddata = true;
+					break;
+				}				
+			}
+
+			if(baddata) { // Alert the user if we have an incomplete record
+				Toast toast = Toast.makeText(getApplicationContext(), "Incomplete Data, Match Not Submitted", Toast.LENGTH_LONG);
+				toast.setGravity(Gravity.CENTER, 0, 0);
+				toast.show();
+			} else { // If our form is filled out, save the match data
+				String[] matchdata = Arrays.copyOf(autodata, autodata.length + teleopdata.length);
+				System.arraycopy(teleopdata, 0, matchdata, autodata.length, teleopdata.length);
+				
+				new WriteFile().execute(matchdata);
+				Log.d("Save Match Data", matchdata[0]); // Log the match number stored
+			}
 
 			return true;
 		}
@@ -216,9 +238,10 @@ ActionBar.TabListener {
 
 				for(int i = 0; i < data.length; i++) {
 					writer.write(data[i]);
-					writer.write("\r\n");
+					writer.write(",");
 				}
-
+				
+				writer.write("\r\n");
 				writer.flush();
 				writer.close();
 
