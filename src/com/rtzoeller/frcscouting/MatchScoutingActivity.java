@@ -1,8 +1,15 @@
 package com.rtzoeller.frcscouting;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
+import android.media.MediaScannerConnection;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -16,7 +23,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 public class MatchScoutingActivity extends FragmentActivity implements
-		ActionBar.TabListener {
+ActionBar.TabListener {
 	/**
 	 * The {@link android.support.v4.view.PagerAdapter} that will provide
 	 * fragments for each of the sections. We use a
@@ -56,12 +63,12 @@ public class MatchScoutingActivity extends FragmentActivity implements
 		// tab. We can also use ActionBar.Tab#select() to do this if we have
 		// a reference to the Tab.
 		mViewPager
-				.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
-					@Override
-					public void onPageSelected(int position) {
-						actionBar.setSelectedNavigationItem(position);
-					}
-				});
+		.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+			@Override
+			public void onPageSelected(int position) {
+				actionBar.setSelectedNavigationItem(position);
+			}
+		});
 
 		// For each of the sections in the app, add a tab to the action bar.
 		for (int i = 0; i < mSectionsPagerAdapter.getCount(); i++) {
@@ -98,7 +105,7 @@ public class MatchScoutingActivity extends FragmentActivity implements
 		case R.id.menu_submit:
 			String autodata = null;
 			String teleopdata = null;
-			
+
 			// Serialize our autonomous data
 			AutoScoutingFragment auto = (AutoScoutingFragment) getSupportFragmentManager().findFragmentByTag("android:switcher:"+R.id.pager+":0");
 			if(auto != null)  // Make sure our fragment has been instantiated
@@ -109,7 +116,7 @@ public class MatchScoutingActivity extends FragmentActivity implements
 					autodata = auto.serialize();
 				}
 			}
-			
+
 			// Serialize our tele-op data
 			TeleopScoutingFragment teleop = (TeleopScoutingFragment) getSupportFragmentManager().findFragmentByTag("android:switcher:"+R.id.pager+":1");
 			if(teleop != null)  // Make sure our fragment has been instantiated
@@ -120,15 +127,12 @@ public class MatchScoutingActivity extends FragmentActivity implements
 					teleopdata = teleop.serialize();
 				}
 			}
-			
+
 			// Display our match report on the debug console
 			String matchdata = autodata + ", " + teleopdata;
+			new WriteFile().execute(matchdata);
 			Log.d("Save Match Data", matchdata);
-			
-			// Alert the user that we have saved match data
-			Toast toast = Toast.makeText(getApplicationContext(), "Saved Match", Toast.LENGTH_SHORT);
-			toast.setGravity(Gravity.CENTER, 0, 0);
-			toast.show();
+
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
@@ -200,6 +204,36 @@ public class MatchScoutingActivity extends FragmentActivity implements
 				return getString(R.string.title_section2).toUpperCase();
 			}
 			return null;
+		}
+	}
+
+	private class WriteFile extends AsyncTask<String, Void, String> {
+		@Override
+		protected String doInBackground(String... data) {
+			File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/matchdata.csv");
+			try {
+				FileWriter writer = new FileWriter(file, true);
+
+				for(int i = 0; i < data.length; i++) {
+					writer.write(data[i]);
+					writer.write("\r\n");
+				}
+
+				writer.flush();
+				writer.close();
+
+			} catch(IOException e) {
+				Log.e("WriteFile", "Unable to write match data");
+				e.printStackTrace();
+			}
+			return null;
+		}
+		@Override
+		protected void onPostExecute(String s) {
+			// Alert the user that we have saved match data
+			Toast toast = Toast.makeText(getApplicationContext(), "Saved Match Data", Toast.LENGTH_SHORT);
+			toast.setGravity(Gravity.CENTER, 0, 0);
+			toast.show();
 		}
 	}
 }
