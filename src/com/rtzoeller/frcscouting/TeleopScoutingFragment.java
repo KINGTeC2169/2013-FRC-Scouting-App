@@ -30,56 +30,56 @@ public class TeleopScoutingFragment extends ScoutingFragment {
 		((Button)teleop.findViewById(R.id.lowgoaldec)).setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				lowgoal = decrement(lowgoal);
-				((TextView)teleop.findViewById(R.id.lowgoalcounter)).setText(Integer.toString(lowgoal));
+				refresh();
 			}
 		});
 
 		((Button)teleop.findViewById(R.id.lowgoalinc)).setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				lowgoal = increment(lowgoal);
-				((TextView)teleop.findViewById(R.id.lowgoalcounter)).setText(Integer.toString(lowgoal));
+				refresh();
 			}
 		});
 
 		((Button)teleop.findViewById(R.id.medgoaldec)).setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				mediumgoal = decrement(mediumgoal);
-				((TextView)teleop.findViewById(R.id.medgoalcounter)).setText(Integer.toString(mediumgoal));
+				refresh();
 			}
 		});
 
 		((Button)teleop.findViewById(R.id.medgoalinc)).setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				mediumgoal = increment(mediumgoal);
-				((TextView)teleop.findViewById(R.id.medgoalcounter)).setText(Integer.toString(mediumgoal));
+				refresh();
 			}
 		});
 
 		((Button)teleop.findViewById(R.id.highgoaldec)).setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				highgoal = decrement(highgoal);
-				((TextView)teleop.findViewById(R.id.highgoalcounter)).setText(Integer.toString(highgoal));
+				refresh();
 			}
 		});
 
 		((Button)teleop.findViewById(R.id.highgoalinc)).setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				highgoal = increment(highgoal);
-				((TextView)teleop.findViewById(R.id.highgoalcounter)).setText(Integer.toString(highgoal));
+				refresh();
 			}
 		});
 
 		((Button)teleop.findViewById(R.id.pyramidgoaldec)).setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				pyramidgoal = decrement(pyramidgoal);
-				((TextView)teleop.findViewById(R.id.pyramidgoalcounter)).setText(Integer.toString(pyramidgoal));
+				refresh();
 			}
 		});
 
 		((Button)teleop.findViewById(R.id.pyramidgoalinc)).setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				pyramidgoal = increment(pyramidgoal);
-				((TextView)teleop.findViewById(R.id.pyramidgoalcounter)).setText(Integer.toString(pyramidgoal));
+				refresh();
 			}
 		});
 
@@ -99,5 +99,30 @@ public class TeleopScoutingFragment extends ScoutingFragment {
 				Integer.toString((((CheckBox)teleop.findViewById(R.id.deadsticked)).isChecked() ? 1 : 0)),
 				((EditText)teleop.findViewById(R.id.comments)).getText().toString()};
 		return s;
+	}
+	
+	@Override
+	public void nextMatch() {
+		// Zero our goal counts
+		super.nextMatch();
+		// Set our spinners to the default values
+		((Spinner)teleop.findViewById(R.id.pyramidspinner)).setSelection(0);
+		((Spinner)teleop.findViewById(R.id.foulspinner)).setSelection(0);
+		// Un-check our checkboxes
+		((CheckBox)teleop.findViewById(R.id.pushedothers)).setChecked(false);
+		((CheckBox)teleop.findViewById(R.id.waspushed)).setChecked(false);
+		((CheckBox)teleop.findViewById(R.id.deadsticked)).setChecked(false);
+		// Clear our comments
+		((EditText)teleop.findViewById(R.id.comments)).setText("");
+	}
+
+	
+	@Override
+	public void refresh() {
+		// We only need to refresh our TextViews, everything else manages itself
+		((TextView)teleop.findViewById(R.id.lowgoalcounter)).setText(Integer.toString(lowgoal));
+		((TextView)teleop.findViewById(R.id.medgoalcounter)).setText(Integer.toString(mediumgoal));
+		((TextView)teleop.findViewById(R.id.highgoalcounter)).setText(Integer.toString(highgoal));
+		((TextView)teleop.findViewById(R.id.pyramidgoalcounter)).setText(Integer.toString(pyramidgoal));
 	}
 }

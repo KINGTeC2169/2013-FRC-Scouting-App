@@ -6,7 +6,10 @@ import java.io.IOException;
 import java.util.Arrays;
 
 import android.app.ActionBar;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.FragmentTransaction;
+import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
@@ -107,7 +110,7 @@ ActionBar.TabListener {
 			String[] teleopdata = null;
 
 			// Serialize our autonomous data
-			AutoScoutingFragment auto = (AutoScoutingFragment) getSupportFragmentManager().findFragmentByTag("android:switcher:"+R.id.pager+":0");
+			final AutoScoutingFragment auto = (AutoScoutingFragment) getSupportFragmentManager().findFragmentByTag("android:switcher:"+R.id.pager+":0");
 			if(auto != null)  // Make sure our fragment has been instantiated
 			{
 				if(auto.getView() != null) // Make sure the fragment's view has not been destroyed
@@ -118,7 +121,7 @@ ActionBar.TabListener {
 			}
 
 			// Serialize our tele-op data
-			TeleopScoutingFragment teleop = (TeleopScoutingFragment) getSupportFragmentManager().findFragmentByTag("android:switcher:"+R.id.pager+":1");
+			final TeleopScoutingFragment teleop = (TeleopScoutingFragment) getSupportFragmentManager().findFragmentByTag("android:switcher:"+R.id.pager+":1");
 			if(teleop != null)  // Make sure our fragment has been instantiated
 			{
 				if(teleop.getView() != null) // Make sure the fragment's view has not been destroyed
@@ -151,7 +154,25 @@ ActionBar.TabListener {
 				String[] matchdata = Arrays.copyOf(autodata, autodata.length + teleopdata.length);
 				System.arraycopy(teleopdata, 0, matchdata, autodata.length, teleopdata.length);
 				
-				new WriteFile().execute(matchdata);
+				// There isn't a good way of passing context to an asynctask but we are going to hope for the best
+				// We will build the dialog here and pass it to the asynctask
+				// We should probably verify the context is still valid at some point
+				AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		        builder.setMessage("Match Data has been saved. Would you like to reset data for the next match?").setCancelable(false)
+		                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+		                    public void onClick(DialogInterface dialog, int id) {
+		                        // Reset for the next match
+		                    	auto.nextMatch();
+		                    	teleop.nextMatch();
+		                    }
+		                }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+		                    public void onClick(DialogInterface dialog, int id) {
+		                        // Don't do anything
+		                    }
+		                });
+		        AlertDialog alert = builder.create();
+				
+				new WriteFile(alert).execute(matchdata);
 				Log.d("Save Match Data", matchdata[0]); // Log the match number stored
 			}
 
@@ -228,8 +249,14 @@ ActionBar.TabListener {
 			return null;
 		}
 	}
-
+	
 	private class WriteFile extends AsyncTask<String, Void, String> {
+		private Dialog dialog;
+		
+		private WriteFile(Dialog dialog) {
+			this.dialog = dialog;
+		}
+		
 		@Override
 		protected String doInBackground(String... data) {
 			File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/matchdata.csv");
@@ -254,9 +281,7 @@ ActionBar.TabListener {
 		@Override
 		protected void onPostExecute(String s) {
 			// Alert the user that we have saved match data
-			Toast toast = Toast.makeText(getApplicationContext(), "Saved Match Data", Toast.LENGTH_SHORT);
-			toast.setGravity(Gravity.CENTER, 0, 0);
-			toast.show();
+			dialog.show();
 		}
 	}
 }

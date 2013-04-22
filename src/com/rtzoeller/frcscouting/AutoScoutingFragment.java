@@ -28,42 +28,42 @@ public class AutoScoutingFragment extends ScoutingFragment {
 		((Button)auto.findViewById(R.id.lowgoaldec)).setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				lowgoal = decrement(lowgoal);
-				((TextView)auto.findViewById(R.id.lowgoalcounter)).setText(Integer.toString(lowgoal));
+				refresh();
 			}
 		});
 
 		((Button)auto.findViewById(R.id.lowgoalinc)).setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				lowgoal = increment(lowgoal);
-				((TextView)auto.findViewById(R.id.lowgoalcounter)).setText(Integer.toString(lowgoal));
+				refresh();
 			}
 		});
 
 		((Button)auto.findViewById(R.id.medgoaldec)).setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				mediumgoal = decrement(mediumgoal);
-				((TextView)auto.findViewById(R.id.medgoalcounter)).setText(Integer.toString(mediumgoal));
+				refresh();
 			}
 		});
 
 		((Button)auto.findViewById(R.id.medgoalinc)).setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				mediumgoal = increment(mediumgoal);
-				((TextView)auto.findViewById(R.id.medgoalcounter)).setText(Integer.toString(mediumgoal));
+				refresh();
 			}
 		});
 
 		((Button)auto.findViewById(R.id.highgoaldec)).setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				highgoal = decrement(highgoal);
-				((TextView)auto.findViewById(R.id.highgoalcounter)).setText(Integer.toString(highgoal));
+				refresh();
 			}
 		});
 
 		((Button)auto.findViewById(R.id.highgoalinc)).setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				highgoal = increment(highgoal);
-				((TextView)auto.findViewById(R.id.highgoalcounter)).setText(Integer.toString(highgoal));
+				refresh();
 			}
 		});
 
@@ -81,5 +81,24 @@ public class AutoScoutingFragment extends ScoutingFragment {
 				goals[0], goals[1], goals[2], // Here we are only using the first three goals
 				((EditText)auto.findViewById(R.id.comments)).getText().toString()};
 		return s;
+	}
+	
+	@Override
+	public void nextMatch() {
+		// Zero our goal counts
+		super.nextMatch();
+		// Increment our match number
+		((EditText)auto.findViewById(R.id.matchnumber)).setText(Integer.toString(Integer.parseInt(((EditText)auto.findViewById(R.id.matchnumber)).getText().toString()) + 1));
+		// Clear our robot number and comments
+		((EditText)auto.findViewById(R.id.robotnumber)).setText("");
+		((EditText)auto.findViewById(R.id.comments)).setText("");
+	}
+
+	@Override
+	public void refresh() {
+		// We only need to refresh our TextViews, everything else manages itself
+		((TextView)auto.findViewById(R.id.lowgoalcounter)).setText(Integer.toString(lowgoal));
+		((TextView)auto.findViewById(R.id.medgoalcounter)).setText(Integer.toString(mediumgoal));
+		((TextView)auto.findViewById(R.id.highgoalcounter)).setText(Integer.toString(highgoal));
 	}
 }

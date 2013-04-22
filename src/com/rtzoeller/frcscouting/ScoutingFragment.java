@@ -46,4 +46,17 @@ public abstract class ScoutingFragment extends Fragment {
 		return s;
 	}
 	
+	public void nextMatch() {
+		// Reset for the next match
+		lowgoal = 0;
+		mediumgoal = 0;
+		highgoal = 0;
+		pyramidgoal = 0;
+		refresh();
+	}
+	
+	public void refresh() {
+		// Synchronize the TextViews with their content
+	}
+	
 }
