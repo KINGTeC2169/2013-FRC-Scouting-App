@@ -22,7 +22,7 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 		
 		// This array holds the item names for our ListView
-		String[] listdata = {"Pit Scouting","Match Scouting"};
+		String[] listdata = {"Pit Scouting","Match Scouting", "Match Data Review"};
 		
 		// Build the ListView from the array
 		list = (ListView)findViewById(R.id.list);
@@ -56,6 +56,10 @@ public class MainActivity extends Activity {
 		case 1:
 			// Match Scouting selected
 			startActivity(new Intent(this, MatchScoutingActivity.class));
+			break;
+		case 2:
+			// Match Data Review selected
+			startActivity(new Intent(this, MatchDataReviewActivity.class));
 			break;
 		default:
 			// Something's wrong, log it
