@@ -41,6 +41,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.rtzoeller.frcscouting.MainActivity" />
         </activity>
+        <activity
+            android:name="com.rtzoeller.frcscouting.AboutDialogActivity"
+            android:label="@string/title_activity_about_dialog"
+            android:theme="@style/NoTitleDialog"
+            android:parentActivityName="com.rtzoeller.frcscouting.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.rtzoeller.frcscouting.MainActivity" />
+        </activity>
     </application>
 
 </manifest>
