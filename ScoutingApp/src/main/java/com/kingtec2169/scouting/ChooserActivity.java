@@ -1,6 +1,7 @@
 package com.kingtec2169.scouting;
 
 import android.app.ListActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
@@ -48,5 +49,18 @@ public class ChooserActivity extends ListActivity {
         }
         /* Build a SimpleAdapter with the data we just packaged */
         return new SimpleAdapter(this, mapList, android.R.layout.simple_list_item_2, viewNames, viewResources);
+    }
+
+    @Override
+         protected void onListItemClick(ListView l, View v, int position, long id) {
+        switch (position) {
+            case 0:
+                /* Field Scouting */
+                startActivity(new Intent(this, FieldScoutingActivity.class));
+                break;
+            default:
+                super.onListItemClick(l, v, position, id);
+        }
+
     }
 }

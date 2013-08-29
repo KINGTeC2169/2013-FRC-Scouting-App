@@ -22,6 +22,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.kingtec2169.scouting.FieldScoutingActivity"
+            android:label="@string/title_activity_field_scouting"
+            android:parentActivityName="com.kingtec2169.scouting.ChooserActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.kingtec2169.scouting.ChooserActivity" />
+        </activity>
     </application>
 
 </manifest>

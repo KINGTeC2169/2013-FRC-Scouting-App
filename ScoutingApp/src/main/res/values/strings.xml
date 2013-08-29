@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="app_name">Scouting App</string>
+    <string name="title_activity_field_scouting">Field Scouting</string>
+
+    <string name="title_field_1">Autonomous</string>
+    <string name="title_field_2">Tele-Op</string>
+
 </resources>
