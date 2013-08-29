@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+     <string-array name="field">
+         <item>Field Scouting</item>
+         <item>On the field!</item>
+     </string-array>
+    <string-array name="pit">
+         <item>Pit Scouting</item>
+         <item>In the pits!</item>
+     </string-array>
+</resources>
