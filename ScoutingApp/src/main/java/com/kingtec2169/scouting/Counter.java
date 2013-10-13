@@ -52,8 +52,10 @@ public class Counter extends LinearLayout implements View.OnClickListener {
     }
 
     public void setFloor(Integer x) {
+        // Set the floor
         floor = x;
-        if (count < floor) {
+        // Check if a floor exists and force our count to be above the floor if one does.
+        if (floor != null && count < floor) {
             count = floor;
         }
     }
