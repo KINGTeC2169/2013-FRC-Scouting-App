@@ -93,7 +93,7 @@ public class FieldScoutingActivity extends FragmentActivity implements ActionBar
                 /* Autonomous selected
                 Show autonomous fragment */
                 getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.container, new Fragment())
+                        .replace(R.id.container, new AutonomousFragment())
                         .commit();
                 break;
             case 1:
