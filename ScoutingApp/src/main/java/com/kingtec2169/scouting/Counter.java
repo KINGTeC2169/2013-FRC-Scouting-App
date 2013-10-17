@@ -58,6 +58,8 @@ public class Counter extends LinearLayout implements View.OnClickListener {
         // Check if a floor exists and force our count to be above the floor if one does.
         if (state.floor != null && state.count < state.floor) {
             state.count = state.floor;
+            // Refresh the counter to show the new value
+            refresh();
         }
     }
 
